@@ -43,7 +43,7 @@ func NewBankPayRepository(db *gorm.DB) IBankPayRepository {
 func (b *bankPayRepository) FindFilteredBankPays() (*[]BankPayEntity, error) {
 	bankPays := new([]BankPayEntity)
 	query := b.db.
-		Where("payment_detail_id is null and payment_id is null and payment_method_id notnull").
+		Where("payment_detail_id is null and payment_id is null and payment_method_id is not null").
 		Order("id ASC").
 		Find(&bankPays)
 
